@@ -1,0 +1,3 @@
+export function Brand({ small = false }: { small?: boolean }) {
+  return <span className={`brand ${small ? "brand-small" : ""}`}><svg width="30" height="32" viewBox="0 0 30 32" fill="none" aria-hidden="true"><path d="M5 10 15 4l10 6v12l-10 6-10-6V10Z M5 10l10 6 10-6 M15 16v12 M15 4v8 M5 22l7-4 M25 22l-7-4" stroke="currentColor" strokeWidth="1.5"/><circle cx="15" cy="16" r="2" fill="currentColor"/></svg><span>synaptik<span className="brand-dot">.</span></span></span>;
+}
