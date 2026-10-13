@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the TanStack file-based routes and shared header/footer in the root shell; distinct content pages need distinct URLs and metadata.
+- Centralize the visual system in src/styles.css and use semantic Button variants; this keeps the static showcase consistent across devices.
+- Keep showcase content browser-safe and static; the contact composer copies text only until real contact details or delivery are supplied.
+- Pre-optimize shared UI dependencies with React in Vite; discovering them after first render can mix cached React optimizer generations during preview updates.
