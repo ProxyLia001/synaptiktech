@@ -44,6 +44,7 @@ export function AboutPreview() {
 }
 
 function EEGVisual({ product }: { product: Product }) {
+  if (!product) return null;
   return (
     <div className="eeg-visual" role="img" aria-label={`Illustrative waveform panel for ${product.name}. Not research data.`}>
       <div className="eeg-top">
@@ -79,6 +80,7 @@ export function ProductFeature({
   full?: boolean;
   label?: string;
 }) {
+  if (!product) return null;
   return (
     <section className="project-section">
       <div className="container">
@@ -112,6 +114,7 @@ export function ProductFeature({
 }
 
 export function ProductRow({ product }: { product: Product }) {
+  if (!product) return null;
   return (
     <article className="product-row">
       <div>
