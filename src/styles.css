@@ -213,3 +213,4 @@ a.owner-tag:hover { border-color: var(--primary); }
 .footer-inner > span a:hover { color: var(--foreground); border-color: var(--primary); }
 .footer-signout { background: none; border: 0; padding: 0; color: var(--muted-foreground); font: inherit; cursor: pointer; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .footer-signout:hover { color: var(--foreground); border-color: var(--primary); }
+.owner-email { color: var(--foreground); }

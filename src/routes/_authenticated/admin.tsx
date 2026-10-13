@@ -6,7 +6,7 @@ import { ExternalLink, LogOut, Pencil, Plus, Save, Trash2, X } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { deleteProduct, saveProduct, type Product } from "@/lib/products.functions";
 import { ownerProductsQuery } from "@/lib/products.queries";
-import { useSignOut } from "@/lib/owner";
+import { useOwnerSession, useSignOut } from "@/lib/owner";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   component: Admin,
@@ -86,6 +86,7 @@ function Admin() {
   const save = useServerFn(saveProduct);
   const remove = useServerFn(deleteProduct);
   const signOut = useSignOut();
+  const owner = useOwnerSession();
 
   const [form, setForm] = useState<FormState | null>(null);
   const [busy, setBusy] = useState(false);
@@ -190,6 +191,14 @@ function Admin() {
             </p>
           )}
         </div>
+      </section>
+
+      <section className="container">
+        <p className="contact-note">
+          Products appear on the Projects page in this order — the lowest number shows first. Unchecking
+          “Show this product on the website” hides a product without deleting it.
+          {owner.email && <> Signed in as <span className="owner-email">{owner.email}</span>.</>}
+        </p>
       </section>
 
       <section className="container">
