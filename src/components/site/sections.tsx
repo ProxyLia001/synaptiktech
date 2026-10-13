@@ -1,31 +1,162 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ArrowRight, Brain, Code2, CircuitBoard, Bot, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { Product } from "@/lib/products.functions";
 
 export function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
-  return <p className="section-label"><span>{number}</span>{children}</p>;
+  return (
+    <p className="section-label">
+      <span>{number}</span>
+      {children}
+    </p>
+  );
 }
 
 export function DisciplineStrip() {
-  return <div className="discipline-strip"><div className="container disciplines">{[{ icon: Brain, text: "Neuroscience" }, { icon: Code2, text: "Programming" }, { icon: CircuitBoard, text: "Engineering" }, { icon: Bot, text: "Robotics" }, { icon: Activity, text: "Brain–computer interfaces" }].map(({ icon: Icon, text }) => <span key={text}><Icon size={17} strokeWidth={1.4}/>{text}</span>)}</div></div>;
+  return (
+    <div className="disciplines" aria-label="Fields Synaptik works across">
+      <span><Brain aria-hidden="true" />NEUROSCIENCE</span>
+      <span><CircuitBoard aria-hidden="true" />ENGINEERING</span>
+      <span><Code2 aria-hidden="true" />PROGRAMMING</span>
+      <span><Bot aria-hidden="true" />ROBOTICS</span>
+      <span><Activity aria-hidden="true" />BRAIN–COMPUTER INTERFACES</span>
+    </div>
+  );
 }
 
 export function AboutPreview() {
-  return <section className="section container about-preview"><div><SectionLabel number="01">THE VISION</SectionLabel><h2>Different disciplines.<br/>One shared curiosity.</h2></div><div className="about-copy"><p>We believe the most meaningful discoveries happen where disciplines meet.</p><p className="muted-copy">Synaptik is an early-stage venture bringing neuroscience and technology together. Our ambition is to build thoughtful tools that advance healthcare, scientific discovery, and our understanding of the brain—and beyond.</p><Link to="/about" className="text-link">Meet Synaptik <ArrowUpRight size={17}/></Link></div></section>;
+  return (
+    <section className="section about-preview">
+      <div className="container about-preview">
+        <div>
+          <SectionLabel number="01">WHO WE ARE</SectionLabel>
+          <h2>Early-stage, deliberately.</h2>
+        </div>
+        <div className="about-copy">
+          <p>Synaptik explores how intelligent systems and the brain can inform one another — and turns those
+            explorations into working tools. We are a small, independent venture: no announcements, no claims,
+            just the first careful steps.</p>
+          <Link to="/about" className="text-link">OUR APPROACH <ArrowRight /></Link>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export function EEGVisual() {
-  return <div className="eeg-visual" role="img" aria-label="Illustrative EEG waveforms, not research data"><div className="eeg-top"><span><Activity size={17}/> NEURA</span><span className="eeg-caption">EEG EXPLORATION</span></div><div className="eeg-chart">{Array.from({ length: 5 }, (_, row) => <div className="eeg-channel" key={row}><span>{["Fp1", "Fp2", "F3", "F4", "C3"][row]}</span><svg viewBox="0 0 600 52" preserveAspectRatio="none" aria-hidden="true"><path d={Array.from({ length: 301 }, (_, i) => { const x = i * 2; const peak = Math.exp(-Math.pow((x - 330 - row * 7) / 28, 2)); const y = 26 + Math.sin(i * .66 + row * 2) * (3 + peak * 15) + Math.sin(i * .21 + row) * 4 + Math.sin(i * 1.7) * 2; return `${i === 0 ? "M" : "L"}${x},${y.toFixed(2)}`; }).join(" ")} fill="none" stroke="currentColor" strokeWidth="1.1"/></svg></div>)}</div><div className="eeg-bottom"><span>EXPLORING SIGNAL. FINDING POSSIBILITY.</span><span>Illustrative visualization</span></div></div>;
+function EEGVisual({ product }: { product: Product }) {
+  return (
+    <div className="eeg-visual" role="img" aria-label={`Illustrative waveform panel for ${product.name}. Not research data.`}>
+      <div className="eeg-top">
+        <span><Activity aria-hidden="true" /> {product.name.toUpperCase()}</span>
+        <span className="eeg-caption">{product.stage.toUpperCase()}</span>
+      </div>
+      <div className="eeg-screen">
+        {[
+          "M0,20 C10,5 16,35 26,20 C34,8 40,30 52,18 C62,8 70,32 82,20 C92,10 100,28 112,18 C124,6 132,32 144,20 C154,10 162,28 172,18",
+          "M0,24 C14,24 18,10 28,24 C38,38 44,12 56,24 C66,34 74,10 86,24 C98,36 104,14 116,24 C128,34 136,12 148,24 C158,34 166,18 172,24",
+          "M0,18 C12,30 18,6 30,18 C42,28 48,8 60,18 C70,26 78,10 90,18 C100,24 108,12 120,18 C132,26 140,10 152,18 C162,24 168,14 172,18",
+          "M0,22 C8,22 14,14 22,22 C30,30 36,16 46,22 C56,28 62,18 72,22 C82,26 90,16 100,22 C110,28 118,18 128,22 C138,26 146,18 156,22 C164,25 168,20 172,22"
+        ].map((d, i) => (
+          <div className="eeg-channel" key={i}>
+            <span className="eeg-label">CH{i + 1}</span>
+            <svg viewBox="0 0 172 40" preserveAspectRatio="none" aria-hidden="true"><path d={d} /></svg>
+          </div>
+        ))}
+      </div>
+      <div className="eeg-bottom">
+        <span>ILLUSTRATIVE VISUALIZATION</span><span>NOT RESEARCH DATA</span>
+      </div>
+    </div>
+  );
 }
 
-export function ProjectFeature({ full = false }: { full?: boolean }) {
-  return <section className="project-section"><div className="container"><div className="section-heading"><SectionLabel number="02">{full ? "OUR FIRST PROJECT" : "FROM VISION TO EXPLORATION"}</SectionLabel>{!full && <Link to="/projects" className="text-link">All projects <ArrowUpRight size={17}/></Link>}</div><div className="project-feature"><EEGVisual/><div className="project-copy"><span className="status"><span/> EARLY-STAGE PROJECT</span><h2>Neura<span className="accent-period">.</span></h2><p className="project-subtitle">A closer look at the brain’s signals.</p><p className="muted-copy">An EEG analysis application exploring how machine learning can help identify seizure-related patterns in brain activity.</p><div className="project-tags"><span>EEG analysis</span><span>Machine learning</span><span>Neuroscience</span></div>{!full ? <Button asChild variant="quiet" size="editorial"><Link to="/projects">Explore Neura <ArrowUpRight size={17}/></Link></Button> : <p className="project-disclaimer">An exploratory project, not a clinically validated diagnostic tool. No research outcomes or performance claims are presented.</p>}</div></div></div></section>;
+export function ProductFeature({
+  product,
+  full = false,
+  label,
+}: {
+  product: Product;
+  full?: boolean;
+  label?: string;
+}) {
+  return (
+    <section className="project-section">
+      <div className="container">
+        <div className="section-heading">
+          <SectionLabel number="02">{label ?? (full ? "OUR PROJECTS" : "FROM VISION TO EXPLORATION")}</SectionLabel>
+          {!full && <Link to="/projects" className="text-link">ALL PROJECTS <ArrowUpRight /></Link>}
+        </div>
+        <div className="project-feature">
+          <EEGVisual product={product} />
+          <div className="project-copy">
+            <span className="status"><span />{product.stage.toUpperCase()}</span>
+            <h2>{product.name}<span className="accent-period">.</span></h2>
+            {product.tagline && <p className="project-subtitle">{product.tagline}</p>}
+            <p className="muted-copy">{product.summary}</p>
+            {product.tags.length > 0 && (
+              <div className="project-tags">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+            )}
+            {product.link && (
+              <Button asChild variant="quiet" size="editorial">
+                <a href={product.link} target="_blank" rel="noopener noreferrer">
+                  {product.link_label} <ArrowUpRight />
+                </a>
+              </Button>
+            )}
+            {full && product.disclaimer && <p className="project-disclaimer">{product.disclaimer}</p>}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ProductRow({ product }: { product: Product }) {
+  return (
+    <article className="product-row">
+      <div>
+        <h3>{product.name}</h3>
+        <p className="muted-copy">{product.tagline || product.summary}</p>
+        {product.tags.length > 0 && (
+          <div className="project-tags">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+        )}
+        {product.disclaimer && <p className="project-disclaimer">{product.disclaimer}</p>}
+      </div>
+      {product.link ? (
+        <a className="text-link" href={product.link} target="_blank" rel="noopener noreferrer">
+          {product.link_label} <ArrowUpRight />
+        </a>
+      ) : null}
+    </article>
+  );
 }
 
 export function ConnectSection() {
-  return <section className="connect-section container"><div><SectionLabel number="03">START A CONVERSATION</SectionLabel><h2>Curiosity is better shared.</h2><p className="muted-copy">Interested in our work, or have a perspective to share?</p></div><Button asChild variant="editorial" size="editorial"><Link to="/contact">Let’s connect <ArrowRight size={17}/></Link></Button></section>;
+  return (
+    <section className="section connect-section">
+      <div className="container">
+        <div>
+          <SectionLabel number="03">CONNECT</SectionLabel>
+          <h2>Early conversations are welcome.</h2>
+        </div>
+        <p>If you work in neuroscience, engineering, clinical research or machine learning and would like to
+          compare notes about projects like Neura, write to us.</p>
+        <Button asChild variant="quiet" size="editorial">
+          <Link to="/contact">GET IN TOUCH <ArrowUpRight /></Link>
+        </Button>
+      </div>
+    </section>
+  );
 }
 
 export function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return <section className="page-intro container"><p className="eyebrow"><span/>{eyebrow}</p><h1>{title}</h1><p>{description}</p></section>;
+  return (
+    <section className="page-intro">
+      <div className="container">
+        <SectionLabel number="—">{eyebrow}</SectionLabel>
+        <h1>{title}</h1>
+        <p>{description}</p>
+      </div>
+    </section>
+  );
 }
