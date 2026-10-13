@@ -1,42 +1,69 @@
-# Synaptiktech
+# Synaptik
 
-The website must be fully responsive and work smoothly on mobile phones, tablets, laptops, and desktop computers. Automatically adapt the layout, navigation, images, typography, and spacing to every screen size. Ensure fast loading, readable text, and accessible navigation on all devices.Create a professional, fully responsive website for Synaptik, an early-stage neuroscience and technology venture.
+> Advancing healthcare, scientific discovery, and our understanding of the brain and universe by bridging neuroscience, engineering, computation, and brain-computer interfaces.
+
+Synaptik is an early-stage neuroscience and technology venture focused on translating exploratory neurotechnology and computational models into practical, accessible tools.
+
+🌐 **Live Website:** [synaptiktech.lovable.app](https://synaptiktech.lovable.app)  
+✉️ **Contact:** [abigailjames8221@gmail.com](mailto:abigailjames8221@gmail.com)
+
+---
+
+## Featured Work
+
+### [Neura — EEG Analysis Platform](https://neura-eeg-analysis.onrender.com)
+An exploratory EEG analysis application examining the application of machine learning algorithms to identify seizure-related waveform patterns in electrophysiological data.
+
+* **Status:** Exploratory prototype / active research
+* **Focus:** Signal preprocessing, feature extraction, and ML classification for neural anomaly detection
+* **Live Demo:** [neura-eeg-analysis.onrender.com](https://neura-eeg-analysis.onrender.com)
+* *Disclaimer:* Exploratory software intended for computational research and educational inquiry; not cleared or certified as a medical device.
+
+---
+
+## Core Pillars
+
+- **Neuroscience & Electrophysiology:** Computational approaches to brain signals, neural dynamics, and cognitive interfaces.
+- **Applied Engineering & Robotics:** Integrating physical systems with biological feedback loops.
+- **Data & Machine Learning:** Developing algorithms capable of extracting meaningful signals from noisy physiological environments.
+- **Open Scientific Discovery:** Building clean, documented tools that promote collaborative research.
+
+---
+
+## Architecture & Technology Stack
+
+The Synaptik web platform is built with a modern full-stack TypeScript architecture:
+
+- **Framework:** [TanStack Start v1](https://tanstack.com/start) with full-stack React 19 & SSR
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com) with custom scientific dark-mode aesthetic
+- **Backend & Database:** Lovable Cloud (PostgreSQL with Row Level Security)
+- **Authentication:** Secure email/password authentication with owner-restricted administrative controls
+- **Content Management:** Dynamic, database-driven product showcase manageable via a protected `/admin` console
 
 
 
-Use a sophisticated black, white and deep purple colour palette. The design should feel scientific, futuristic, elegant and credible.
+
+Contact & Collaboration
+
+I'm open to feedback, research discussions, and collaboration opportunities related to neuroscience, EEG analysis, and neurotechnology.
+
+Founder: Abigail James
+Email: abigailjames8221@gmail.com
+Website: https://synaptiktech.lovable.app/contact
+
+---
+
+## Local Development
+
+### Prerequisites
+- Node.js (v20+ recommended)
+- `npm` or `bun`
+
+### Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-github-repo-url>
+   cd synaptik
 
 
-
-Include a homepage, About section, Research and Innovation section, and a Projects section featuring Neura, our first project: an EEG analysis application exploring machine learning for identifying seizure-related patterns.
-
-
-
-Our broader vision is to unite neuroscience, engineering, programming, robotics and brain-computer interfaces to advance healthcare, scientific discovery and humanity's understanding of the brain and universe.
-
-
-
-Make the website look excellent on mobile phones. Use clear typography, subtle animations and a clean layout. Do not invent achievements, research results or partnerships, make it simple using HTML, CSS and JavaScript, it's mainly a website to showcase my products and where people can contact me and note don't make the purple too much
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://synaptiktech.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d047396b-93de-43ca-a087-16adc4d17f29).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
