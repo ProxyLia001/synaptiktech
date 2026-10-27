@@ -4,7 +4,7 @@
 
 Synaptik is an early-stage neuroscience and technology venture focused on translating exploratory neurotechnology and computational models into practical, accessible tools.
 
-🌐 **Live Website:** [synaptiktech.pages.dev]  
+🌐 Live Website: "synaptiktech.pages.dev" (https://synaptiktech.pages.dev)
 ✉️ **Contact:** [abigailjames8221@gmail.com](mailto:abigailjames8221@gmail.com)
 
 ---
