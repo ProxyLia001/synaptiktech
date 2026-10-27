@@ -20,11 +20,14 @@ export type ProductDraft = {
   sort_order: number;
 };
 
+// Publishable (browser-safe) defaults so other hosts work without extra setup.
+const DEFAULT_URL = "https://iuwmlyfpmauwiokvfapj.supabase.co";
+const DEFAULT_KEY = "sb_publishable_ukBxncsqN6S03H_dm7Ubdw_lisiLvCc";
+
 // Public reads use a publishable client: visitors only ever see published rows.
 function createPublishableClient() {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
-  if (!url || !key) throw new Error("The backend is not configured yet.");
+  const url = process.env["SUPABASE_URL"] || import.meta.env["VITE_SUPABASE_URL"] || DEFAULT_URL;
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env["VITE_SUPABASE_PUBLISHABLE_KEY"] || DEFAULT_KEY;
   return createClient<Database>(url, key, {
     auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
     global: {
